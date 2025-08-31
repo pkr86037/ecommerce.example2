@@ -4,11 +4,19 @@ import { MdDelete } from "react-icons/md";
 import "./App.css";
 
 export default function App() {
+
   const [inputValue, setinputValue] = useState("");
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState(() => {
+        const rawTodo = localStorage.getItem("todoKey");
+  if(!rawTodo) return [];
+  return JSON.parse(rawTodo);
+  });
   const [dateTime, setDateTime] = useState("");
 
  
+      // todo Add data to local storage
+    localStorage.setItem("todoKey", JSON.stringify(task))
+
   useEffect(() => {
     const interval = setInterval(() => {
       const now = new Date();
