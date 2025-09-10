@@ -150,6 +150,6 @@ button{
 
 .completed-task {
   text-decoration: line-through;
-  color: gray;
+  color:grey;
   opacity: 0.7;
 }

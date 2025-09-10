@@ -4,46 +4,48 @@ import { MdDelete } from "react-icons/md";
 import "./App.css";
 
 export default function App() {
-
   const [inputValue, setinputValue] = useState("");
   const [task, setTask] = useState(() => {
-        const rawTodo = localStorage.getItem("todoKey");
-  if(!rawTodo) return [];
-  return JSON.parse(rawTodo);
+    const rawTodo = localStorage.getItem("todoKey");
+    if (!rawTodo) return [];
+    return JSON.parse(rawTodo);
   });
-  const [dateTime, setDateTime] = useState("");
+  const [dateTime, SetDateTime] = useState("");
+  // todo Add data to local storage
+  localStorage.setItem("todoKey", JSON.stringify(task));
 
- 
-      // todo Add data to local storage
-    localStorage.setItem("todoKey", JSON.stringify(task))
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const updatedDate = now.toDateString();
-      const updatedTime = now.toLocaleTimeString();
-      setDateTime(`${updatedDate} - ${updatedTime}`);
-    }, 1000);
-
-    return () => clearInterval(interval); 
-  }, []);
+useEffect(() => {
+  const interval = setInterval(() => {
+    const newDate = new Date().toDateString();
+    const newTime = new Date().toLocaleTimeString("en-US",{
+      hour:"numeric",
+      minute:"numeric",
+      second:"numeric",
+      hour12:true,
+    })  
+    SetDateTime(`${newDate} - ${newTime}`)
+  });
+  return () => clearInterval(interval);
+},[])
 
   const handleInputChange = (value) => {
     setinputValue(value);
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
 
     if (!inputValue) return;
-
 
     if (task.some((t) => t.text === inputValue)) {
       setinputValue("");
       return;
     }
 
-    setTask((prevTask) => [...prevTask, { text: inputValue, completed: false }]);
+    setTask((prevTask) => [
+      ...prevTask,
+      { text: inputValue, completed: false },
+    ]);
 
     setinputValue("");
   };
@@ -95,10 +97,7 @@ export default function App() {
               <li className="list-cantaner" key={index}>
                 <div className="result">
                   <div
-                    className={`result-name ${
-                      list.completed ? "completed-task" : ""
-                    }`}
-                  >
+                    className={`result-name ${ list.completed ? "completed-task" : "" }`}>
                     {list.text}
                   </div>
                   <div className="icons">
@@ -107,7 +106,7 @@ export default function App() {
                         className="checkBtn"
                         onClick={() => handleToggleComplete(list.text)}
                       >
-                        <FaCheck color={list.completed ? "green" : "gray"} />
+                        <FaCheck/>
                       </button>
                     </div>
                     <div className="del-icon">
@@ -126,11 +125,7 @@ export default function App() {
             ))}
           </ul>
 
-          <button
-            type="button"
-            className="clear-btn"
-            onClick={clearAllList}
-          >
+          <button type="button" className="clear-btn" onClick={clearAllList}>
             Clear All
           </button>
         </section>
