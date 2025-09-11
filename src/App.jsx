@@ -18,7 +18,7 @@ useEffect(() => {
  const interval = setInterval(() => {
     const newDate = new Date().toLocaleDateString();
     const newTime = new Date().toLocaleTimeString("en-US");
-    setDateTime(`${newDate}-${newTime}`);
+    setDateTime(`${newDate} - ${newTime}`);
   }, 1000);
 return () => clearInterval(interval)
 },[])
