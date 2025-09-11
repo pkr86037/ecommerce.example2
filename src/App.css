@@ -1,155 +1,152 @@
-/* Main container */
-.todo-cantaner {
-  text-align: center;
-  margin-top: 30px;
+
+
+.completed-task{
+  text-decoration: line-through;
+  color: grey;
 }
 
-.todo-cantaner h1 {
-  font-size: 2rem;
-  color: #333;
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  padding: 5px;
+  max-width: 500px;
+  margin: auto;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-family: cursive;
+  font-size: 2.5rem;
+  color: #2d3436;
+}
+
+/* Time display */
+.timezone {
+  text-align: center;
+  color: #636e72;
+  font-size: 18px;
   margin-bottom: 20px;
 }
 
-/* Form styling */
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* Form styles */
 form {
   display: flex;
-  align-items: center;
   gap: 10px;
 }
 
-.todo-input {
-  padding: 10px 15px;
-  border: 2px solid #aaa;
+form input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #b2bec3;
   border-radius: 8px;
   outline: none;
-  font-size: 1rem;
-  width: 250px;
-  transition: 0.3s;
 }
 
-.todo-input:focus {
-  border-color: #007bff;
+form input:focus {
+  border-color: #0984e3;
 }
 
-button[type="submit"] {
-  padding: 10px 20px;
+form button {
+  padding: 10px 15px;
   border: none;
-  background-color: #007bff;
+  background: #0984e3;
   color: white;
-  font-size: 1rem;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-button[type="submit"]:hover {
-  background-color: #0056b3;
+form button:hover {
+  background: #74b9ff;
 }
 
-/* Task list section */
-.display-section {
-  margin-top: 30px;
-  width: 480px;
+/* Task list */
+ul {
+  list-style-type: none;
+  padding: 0px;
 }
 
-.display-section ul {
-  list-style: none;
-}
-
-.task-text {
-  flex: 1;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Icons grouped together */
-.icon-group {
+li {
   display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.icon-group svg {
-  cursor: pointer;
-  font-size: 1.2rem;
-  color: #666;
-  transition: color 0.2s;
-}
-
-.icon-group svg:hover {
-  color: #007bff;
-}
-
-.result{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 0.1px solid rgb(234, 228, 229);
-    width: 380px;
-    border-radius: 10px;
-    height: 45px;
-    font-size: 22px;
-    font-family: sans-serif;
-    box-shadow: 5px 3px 1px 1px grey;
-}
-
-.icons{
-    display: flex;
-    gap: 20px;
-    padding-right: 15px;
-    font-size:25px;
-}
-
-.result-name{
-    padding-left: 10px;
-}
-
-.list-cantaner{
-  margin: 10px;
-}
-
-
-button{
-  border: transparent;
-  background-color: transparent; 
-} 
-
-.clear-btn{
-  align-items: center;
-  border: 2px solid black;
-  padding: 8px 10px;
+   align-items: center;
+  justify-content: space-between; 
+  background: #fff;
+  padding: 10px 15px;
+  border: 1px solid #dfe6e9;
   border-radius: 8px;
-  background-color: tomato;
-  color: aliceblue;
-  position: relative;
-  left: 190px;
-  cursor:pointer;
-}
-.clear-btn:hover{
-  background-color: red;
-  color: black;
+  margin-bottom: 10px;
+  transition: 0.3s;
 }
 
-.checkBtn{
-  color: darkgreen;
-  font-size: 20px;
+li:hover {
+  background: #f1f2f6;
+}
+
+/* Task text */
+
+li p {
+  margin: 0;
+  font-size: 16px;
+  color: #2d3436;
+  width: 300px;
+}
+
+
+
+
+/* Buttons inside task */
+li button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
 }
 
-.deleteBtn{
-  color: red;
-  font-size: 22px;
+li button:first-of-type {
+  background: #55efc4;
+  color: #2d3436;
+}
+
+li button:first-of-type:hover {
+  background: #00b894;
+  color: white;
+}
+
+li button:last-of-type {
+  background: #d63031;
+  color: white;
+}
+
+li button:last-of-type:hover {
+  background: #ff7675;
+}
+
+/* Clear all button */
+div > button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #e17055;
+  color: white;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.completed-task {
-  text-decoration: line-through;
-  color:grey;
-  opacity: 0.7;
+div > button:hover {
+  background: #ff7675;
 }
